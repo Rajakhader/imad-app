@@ -6,7 +6,7 @@ var element = document.getElementById('main-text');
 element.innerHTML = 'New value';
 
 //Move the image
-var img = document.getElementById('madi');
+var img = document.getElementById('doodle');
 img.onclick = function () {
-  img.style.marginLeft = '2500px';  
+  img.style.marginLeft = '100px';  
 };
