@@ -1,6 +1,15 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var Pool = reuire('pg').Pool;
+
+var confirg = {
+    user: 'rajarey19',
+    databade: 'rajarey19',
+    host: 'db-rajarey19-2490',
+    port: '5432',
+    password: process.env.DB_PASSWORD
+}
 var crypto = require('crypto');
 
 var app = express();
@@ -19,6 +28,18 @@ app.get('/hash/:input', function (req,res)
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+var pool = new Pool(config);
+app.get('/test-db', function (req,res)
+    {
+    pool.query('SELECT * FROM test', function (err, result) {
+        if (err) {
+            res.status(500).send(err.toString());
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
 });
 
 app.get('/article-one', function (req, res){
