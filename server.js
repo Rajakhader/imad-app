@@ -14,14 +14,14 @@ app.get('/article-one', function (req, res){
     res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 });
 
-function hash (input, salt) {
+function hash (salt) {
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     return hashed.toString('hex');
 }
 
-app.get('/hash/:input', function (req,res) 
+app.get('/hash/', function (req,res) 
 {
-    var hashedString = hash(req.paramas.input, 'this-is-some-random-string');
+    var hashedString = hash(req.paramas, 'this-is-some-random-string');
     res.send(hashedString);
 });
 
