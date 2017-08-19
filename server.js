@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = reuire('pg').Pool;
 
-var confirg = {
+var config = {
     user: 'rajarey19',
     databade: 'rajarey19',
     host: 'db-rajarey19-2490',
